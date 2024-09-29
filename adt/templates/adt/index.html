@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structure Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #282c34;
+            color: #61dafb;
+            font-family: 'Helvetica', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styles */
+        header {
+            padding: 20px;
+            background-color: #212529;
+            border-bottom: 2px solid #61dafb;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .watermark {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            color: rgba(97, 218, 251, 0.5);
+        }
+
+        /* Navigation bar styles */
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 1.4em;
+        }
+
+        nav ul li a:hover {
+            background-color: #61dafb;
+            color: #282c34;
+        }
+
+        /* Section styles */
+        .section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* About Text Styles */
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .about-text h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        /* Container styles */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Button styling adjustments */
+.adt-button {
+    background-color: #61dafb;
+    color: #282c34;
+    font-size: 25px; /* Increase font size */
+    padding: 30px 40px; /* Increase padding */
+    margin: 15px; /* Add more margin around buttons */
+    border: none;
+    width: 250px; /* Set a fixed width */
+    height: 150px;
+    cursor: pointer;
+    border-radius: 8px; /* Increase border radius */
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Add deeper shadow */
+    width: 100%; /* Keep buttons responsive */
+}
+
+/* Aligning description and button properly */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px; /* Match button width */
+}
+
+.adt-button:hover {
+    background-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.button-description {
+    font-size: 1em;
+    color: #61dafb;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Adjust the grid layout for button rows */
+.button-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+    gap: 30px; /* Increase space between buttons */
+    justify-items: center;
+    margin-bottom: 20px; /* Add margin below each row */
+}
+
+/* Center the last button */
+.button-row:last-child {
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+}
+
+.operations-header {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+
+
+        .about-text p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #61dafb;
+            margin-bottom: 15px;
+        }
+
+
+        .developer-text h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        /* About the Developer Text Styles */
+        .developer-text {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #61dafb;
+        }
+
+        .developer-text h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .developer-text h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .developer-text p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Updated Contact Form Styles */
+.contact-form {
+    max-width: 600px; /* Wider width for the form */
+    margin: 0 auto;
+    padding: 40px; /* Increase padding for more space */
+    text-align: left;
+    background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow for depth */
+}
+
+.contact-form h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    color: #61dafb;
+    font-size: 1.1em; /* Slightly larger font */
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 15px; /* Increased padding */
+    margin: 10px 0;
+    border: 2px solid #61dafb; /* Border for inputs */
+    border-radius: 5px;
+    font-size: 1em; /* Font size for inputs */
+    background-color: #282c34; /* Dark background for inputs */
+    color: #ffffff; /* Text color */
+}
+
+.contact-form button {
+    background-color: #61dafb; /* Button color */
+    color: #282c34;  
+    padding: 15px 20px; /* Increased padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em; /* Larger font for the button */
+    transition: background-color 0.3s;
+    width: 100%; /* Full width button */
+}
+
+.contact-form button:hover {
+    background-color: #ffffff; /* Button hover effect */
+}
+
+
+footer {
+    background-color: #212529; /* Same as header for consistency */
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.social-icons a {
+    margin: 0 15px; /* Horizontal spacing */
+    color: #61dafb; /* Matching your theme */
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #ffffff; /* Change color on hover */
+}
+
+.footer-content p {
+    margin: 10px 0; /* Spacing between text */
+}
+
+    </style>
+
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="watermark"><span style="font-family: 'Cedarville Cursive', cursive;">Abin Pillai</span></a></div>
+        <h1>Data Structure Operations</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#operations">Data Structure Operations</a></li>
+            <li><a href="#developer">About the Developer</a></li>
+            <li><a href="#contact">Contact Form</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <div id="about" class="section">
+        <div class="about-text">
+            <h2>About This Project</h2>
+            <p>This project provides an interactive platform for users to understand and execute different data structure operations such as Stack, Queue, Linked List, Binary Trees, Graphs, and more.</p>
+            <p>The application offers easy-to-use buttons to run operations and visualize how each data structure works. This is especially useful for students learning data structures or anyone who wants to revisit core concepts.</p>
+            <p>How to use: Simply navigate to the operations page and click on the respective button for the data structure you want to explore. The system will then display the relevant operations (like insert, delete, traverse) and perform them step-by-step.</p>
+            <p>Feel free to explore different data structures and dive deeper into the theory and code that powers these essential components of computer science.</p>
+            <p>All the source codes of these applications is uploaded on my GitHub: <a href="https://github.com/Abin2112/Data-Structure-" target="_blank">Data Structures</a></p>
+        </div>
+    </div>
+
+    
+
+    <div id="operations" class="section">
+        <h2 class="operations-header">Data Structure Operations</h2>
+        <div class="container">
+            <!-- Button Row 1 (3 buttons) -->
+            <div class="button-row">
+                <form action="{% url 'run_stack' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Stack Operations</button>
+                    <p class="button-description">Perform push, pop, and peek operations on a stack.</p>
+                </form>
+                <form action="{% url 'run_singly_linked_list' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Singly Linked List</button>
+                    <p class="button-description">Insert, delete, and traverse a singly linked list.</p>
+                </form>
+                <form action="{% url 'run_doubly_linked_list' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Doubly Linked List</button>
+                    <p class="button-description">Insert, delete, and traverse a doubly linked list.</p>
+                </form>
+            </div>
+    
+            <!-- Button Row 2 (3 buttons) -->
+            <div class="button-row">
+                <form action="{% url 'run_queue' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Queue Operations</button>
+                    <p class="button-description">Perform enqueue, dequeue, and peek operations on a queue.</p>
+                </form>
+                <form action="{% url 'run_priority_queue' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Priority Queue</button>
+                    <p class="button-description">Perform enqueue, dequeue, and peek operations on a priority queue.</p>
+                </form>
+                <form action="{% url 'run_priority_queue_heapq' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Priority Queue (heapq)</button>
+                    <p class="button-description">Priority queue implementation using Python's heapq method.</p>
+                </form>
+            </div>
+    
+            <!-- Button Row 3 (3 buttons) -->
+            <div class="button-row">
+                <form action="{% url 'run_binary_tree' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Binary Tree Operations</button>
+                    <p class="button-description">Execute insertion, deletion, and traversal in binary trees.</p>
+                </form>
+                <form action="{% url 'run_huffman_tree' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Huffman Coding (Tree)</button>
+                    <p class="button-description">Huffman tree coding for lossless data compression.</p>
+                </form>
+                <form action="{% url 'run_graph' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Graph Operations</button>
+                    <p class="button-description">Graph traversal, shortest path, and connectivity operations.</p>
+                </form>
+            </div>
+    
+            <!-- Button Row 4 (3 buttons) -->
+            <div class="button-row">
+                <form action="{% url 'run_graph_bfs_dfs' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Graph BFS & DFS</button>
+                    <p class="button-description">Perform Breadth-First Search and Depth-First Search on graphs.</p>
+                </form>
+                <form action="{% url 'run_traveling_salesman' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Traveling Salesman Problem</button>
+                    <p class="button-description">Solve the Traveling Salesman Problem (TSP) using various algorithms.</p>
+                </form>
+                <form action="{% url 'run_hash_table' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Hash Table (No Collisions)</button>
+                    <p class="button-description">Hash table implementation without collision handling.</p>
+                </form>
+            </div>
+    
+            <!-- Last Button Row (1 button centered) -->
+            <div class="button-row" style="grid-template-columns: repeat(1, 1fr); justify-items: center;">
+                <form action="{% url 'run_hash_table_collision' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="adt-button" type="submit">Hash Table (With Collisions)</button>
+                    <p class="button-description">Hash table with collision resolution mechanisms.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <!-- About the Developer Section -->
+    <div id="developer" class="section">
+        <div class="developer-text">
+            <h2>About the Developer</h2>
+            <p>My name is Abin Pillai, and I am a computer science enthusiast. I have a strong interest in data structures and algorithms, Under the Guidance of Dr.Mahendra Kanojia Sir, I enjoy creating interactive applications to help others learn and understand these concepts.</p>
+            <p>With a background in Python programming and web development, I aim to make learning fun and engaging. This project is one of many initiatives to combine my passion for coding with education.</p>
+            <p>If you have any feedback or suggestions, feel free to reach out to me!</p>
+            <h3>My Motivation</h3>
+            <p>I have always been passionate about solving complex problems, especially in computer science. This project represents my love for data structures and how they enable efficient problem-solving in the real world. Through this project, I aim to help students and developers learn the fundamentals of data structures in an interactive way, making learning both engaging and impactful.</p>
+            <h3>Check My Portfolio</h3>
+            <p>For a detailed overview of my skills, achievements, and certificates, please visit my <a href="https://personalportfolioabin.netlify.app" target="_blank">portfolio website</a>.</p>
+
+    <!-- External Resources Section -->
+<div id="resources" class="section">
+    <h2>Learn More About Data Structures</h2>
+    <p>Here are some great resources and articles to help you dive deeper into data structures:</p>
+    <ul>
+        <li><a href="https://www.geeksforgeeks.org/data-structures/" target="_blank">GeeksforGeeks: Data Structures</a> - A comprehensive guide to various data structures.</li>
+        <li><a href="https://www.tutorialspoint.com/data_structures_tutorial/index.htm" target="_blank">TutorialsPoint: Data Structures</a> - Tutorials covering various data structures with examples.</li>
+        <li><a href="https://www.khanacademy.org/computing/computer-science/algorithms" target="_blank">Khan Academy: Algorithms</a> - Understand the algorithms related to data structures.</li>
+    </ul>
+</div>
+
+        </div>
+    </div>
+
+<!-- Contact Form Section -->
+<div id="contact" class="section">
+    <form class="contact-form" action="submit_contact.php" method="POST">
+        <h2>Contact Me</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <p class="copyright">© 2024 Abin Pillai. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://x.com/Abin2112?t=ulV67x9Y3ur1G2oCHG_-kQ&s=09" target="_blank">Twitter</a>
+            <a href="https://www.instagram.com/_abin_2107?igsh=MTI5eDN1dG4yMmo2Zw==" target="_blank">Instagram</a>
+            <a href="https://github.com/Abin2112" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/abin-pillai-026252298" target="_blank">LinkedIn</a>
+            <a href="https://g.dev/AbinPillai" target="_blank">Google Developer</a>
+        </div>
+        <p>Aspiring Developer | Data Structure Enthusiast | Lifelong Learner</p>
+        <p>Contact: <a href="mailto:pillaiabincs232414@gmail.com?Subject=Hello%20again">pillaiabincs232414@gmail.com</a></p>
+    </div>
+</footer>
+
+
+</body>
+</html>
